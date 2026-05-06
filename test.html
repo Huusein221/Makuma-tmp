@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makuma Mondial — Stylish Furniture in Balinese Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --black: #1A1A1A;
+    --black-deep: #111111;
+    --gold: #C9A96E;
+    --gold-dark: #A8854A;
+    --muted: #6B6560;
+    --white: #FFFFFF;
+    --earth1: #2C2418;
+    --earth2: #3D2B1F;
+    --earth3: #5C4A3A;
+    --earth4: #4A3728;
+    --earth5: #3A4228;
+    --earth6: #2E2A1E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── TOP BAR ─────────────────────────────────────────── */
+  .top-bar {
+    background: var(--black);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1000;
+  }
+  .top-bar-left {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .top-bar-right {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+  }
+  .top-bar-right span { color: var(--gold); }
+
+  /* ── NAVBAR ─────────────────────────────────────────── */
+  .navbar {
+    background: var(--cream);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: box-shadow 0.3s ease;
+  }
+  .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 64px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .nav-icon {
+    cursor: pointer;
+    color: var(--black);
+    transition: color 0.2s;
+  }
+  .nav-icon:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); transition: 0.3s; }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 65fr 35fr;
+    height: calc(100vh - 104px);
+    min-height: 600px;
+  }
+  .hero-left {
+    position: relative;
+    overflow: hidden;
+    background: var(--earth1);
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-left-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 115%;
+    object-fit: cover;
+    object-position: center top;
+    will-change: transform;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
+    z-index: 1;
+  }
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    max-width: 700px;
+  }
+  .hero-overline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+  .hero-h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 6.5vw, 96px);
+    line-height: 0.93;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.9s ease 0.5s both;
+  }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+  .hero-text .btn-gold { animation: fadeUp 0.7s ease 0.9s both; }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-outline-gold {
+    display: inline-block;
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  }
+  .btn-outline-gold:hover { background: var(--gold); color: var(--white); transform: translateY(-1px); }
+
+  .hero-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+  .hero-right-cell {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+  .hero-right-cell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+    z-index: 1;
+  }
+  .hero-right-top { background: var(--earth2); }
+  .hero-right-bottom { background: var(--earth3); border-top: 1px solid rgba(255,255,255,0.05); }
+  .hero-cell-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s ease;
+  }
+  .hero-right-cell:hover .hero-cell-img { transform: scale(1.05); }
+  .hero-cell-label {
+    position: relative;
+    z-index: 2;
+    padding: 1.2rem 1.5rem;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .hero-right-cell:hover .hero-cell-label { color: var(--gold); }
+
+  /* ── TRUST BAR ───────────────────────────────────────── */
+  .trust-bar {
+    background: var(--white);
+    padding: 18px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    padding: 0 2.5rem;
+  }
+  .trust-item + .trust-item { border-left: 1px solid rgba(0,0,0,0.1); }
+  .trust-icon { color: var(--gold); font-size: 16px; }
+
+  /* ── MARQUEE ─────────────────────────────────────────── */
+  .marquee-wrap {
+    background: var(--black);
+    padding: 15px 0;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-right: 0;
+    flex-shrink: 0;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION HEADERS ─────────────────────────────────── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .overline {
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 48px);
+    color: var(--black);
+    line-height: 1.15;
+    font-weight: 400;
+  }
+  .section-h2.light { color: var(--white); }
+
+  /* ── EDITORIAL INTRO ─────────────────────────────────── */
+  .editorial-intro {
+    background: var(--cream);
+    padding: 100px 2rem;
+    text-align: center;
+  }
+  .editorial-intro .section-h2 {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+  .editorial-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .link-gold {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .link-gold:hover { color: var(--gold-dark); border-color: var(--gold-dark); }
+
+  /* ── ROOM CARDS GRID ─────────────────────────────────── */
+  .rooms-section {
+    background: var(--cream);
+    padding: 80px 0 100px;
+  }
+  .rooms-section .section-header { padding: 0 2rem; }
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .room-card {
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .card-media {
+    position: relative;
+    overflow: hidden;
+  }
+  .rooms-grid .card-media { aspect-ratio: 3/4; }
+  .lamps-grid .card-media { aspect-ratio: 4/3; }
+
+  .card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: opacity 0.5s ease, transform 0.7s ease;
+  }
+  .card-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .card-media.hovered .card-img { opacity: 0; transform: scale(1.04); }
+  .card-media.hovered .card-vid { opacity: 1; }
+  .room-card:hover .card-img { transform: scale(1.04); }
+
+  .card-label {
+    padding: 18px 20px;
+    background: var(--cream);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .card-label h3 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  .card-label .discover-link {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    transition: letter-spacing 0.2s;
+  }
+  .room-card:hover .discover-link { letter-spacing: 0.14em; }
+
+  /* ── FEATURED DOORS ──────────────────────────────────── */
+  .featured {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    min-height: 70vh;
+  }
+  .featured-media {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .featured-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.5s ease;
+  }
+  .featured-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .featured-media.hovered .featured-img { opacity: 0; }
+  .featured-media.hovered .featured-vid { opacity: 1; }
+
+  .featured-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-bg-text {
+    position: absolute;
+    top: 50%;
+    left: -2rem;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(80px, 10vw, 140px);
+    color: rgba(201, 169, 110, 0.05);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .featured-text .overline { text-align: left; }
+  .featured-h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(30px, 3vw, 50px);
+    color: var(--white);
+    line-height: 1.12;
+    margin: 1rem 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .featured-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+  }
+
+  /* ── LAMPS SECTION ───────────────────────────────────── */
+  .lamps-section {
+    background: var(--cream);
+    padding: 80px 0 100px;
+  }
+  .lamps-section .section-header { padding: 0 2rem; }
+  .lamps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  /* ── TABLES SECTION ──────────────────────────────────── */
+  .tables-section {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    min-height: 60vh;
+  }
+  .tables-media {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .tables-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.5s ease;
+  }
+  .tables-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .tables-media.hovered .tables-img { opacity: 0; }
+  .tables-media.hovered .tables-vid { opacity: 1; }
+
+  .tables-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .tables-text .overline { text-align: left; }
+  .tables-h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(28px, 2.8vw, 46px);
+    color: var(--white);
+    line-height: 1.15;
+    margin: 1rem 0 1.5rem;
+  }
+  .tables-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 340px;
+  }
+
+  /* ── TESTIMONIALS ────────────────────────────────────── */
+  .testimonials {
+    background: var(--cream);
+    padding: 100px 2rem;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .testimonial-card {
+    background: var(--white);
+    padding: 2rem 2rem 2rem 1.8rem;
+    border-left: 3px solid var(--gold);
+  }
+  .stars {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .testimonial-name {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BLOG ────────────────────────────────────────────── */
+  .blog-section {
+    background: var(--cream);
+    padding: 80px 0 100px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .blog-section .section-header { padding: 0 2rem; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .blog-card { overflow: hidden; }
+  .blog-img {
+    aspect-ratio: 3/2;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .blog-card:hover .blog-img { transform: scale(1.04); }
+  .blog-img-wrap { overflow: hidden; }
+  .blog-text { padding: 1.5rem 1.5rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .blog-date {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+  .blog-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .blog-read {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    transition: letter-spacing 0.2s;
+  }
+  .blog-card:hover .blog-read { letter-spacing: 0.18em; }
+
+  /* ── LOCATIONS ───────────────────────────────────────── */
+  .locations {
+    background: var(--black);
+    padding: 100px 2rem;
+  }
+  .locations .section-h2.light { margin-bottom: 4rem; }
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .location-item {
+    border-top: 2px solid var(--gold);
+    padding-top: 2rem;
+  }
+  .location-name {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+  .location-info {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.9;
+  }
+  .location-email {
+    display: block;
+    margin-top: 0.8rem;
+    color: var(--gold);
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--black-deep);
+    padding: 60px 2rem 0;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .footer-tagline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.5rem;
+  }
+  .footer-social { display: flex; gap: 1rem; }
+  .footer-social a {
+    color: rgba(255,255,255,0.4);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  .footer-social a:hover { color: var(--gold); }
+  .footer-col-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0; }
+  .footer-links a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    line-height: 2.3;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 20px 0;
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-bottom p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.from-left  { transform: translateX(-36px); }
+  .reveal.from-right { transform: translateX(36px); }
+  .reveal.scale-in   { transform: scale(0.93) translateY(0); }
+  .reveal.visible    { opacity: 1; transform: none; }
+  .reveal[data-d="1"] { transition-delay: 0.08s; }
+  .reveal[data-d="2"] { transition-delay: 0.16s; }
+  .reveal[data-d="3"] { transition-delay: 0.24s; }
+  .reveal[data-d="4"] { transition-delay: 0.32s; }
+  .reveal[data-d="5"] { transition-delay: 0.40s; }
+  .reveal[data-d="6"] { transition-delay: 0.48s; }
+
+  /* ── HERO LOAD ANIMATION ─────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; grid-template-rows: 60vh auto; }
+    .hero-right { grid-template-rows: 1fr 1fr; height: 40vh; }
+    .hero-h1 { font-size: 42px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .rooms-grid, .lamps-grid, .blog-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .featured, .tables-section { grid-template-columns: 1fr; }
+    .featured-media, .tables-media { min-height: 50vw; }
+    .featured-text, .tables-text { padding: 3rem 2rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .locations-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .trust-bar { flex-direction: column; gap: 1rem; }
+    .trust-item + .trust-item { border-left: none; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1rem; }
+    .top-bar-left { font-size: 9px; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span class="top-bar-left">Free delivery from €150 &nbsp;·&nbsp; 3 showrooms in Alicante</span>
+  <span class="top-bar-right"><span>ES</span> | EN</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="logo">Makuma Mondial</a>
+    <ul class="nav-links">
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Shop ▾</a></li>
+      <li><a href="#">Inspiration</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <span class="nav-icon">
+        <svg width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </span>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <img class="hero-left-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(6).jpg" alt="Makuma Mondial showroom" loading="eager">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <span class="hero-overline">Balinese Furniture · Teulada · Alicante</span>
+      <h1 class="hero-h1">WHERE<br>DOORS OPEN<br>TO <em>ANOTHER</em><br>WORLD</h1>
+      <a href="#" class="btn-gold">Explore the Collection</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-cell hero-right-top">
+      <img class="hero-cell-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(7).jpg" alt="The Doors Collection">
+      <span class="hero-cell-label">The Doors Collection →</span>
+    </div>
+    <div class="hero-right-cell hero-right-bottom">
+      <img class="hero-cell-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(1).jpg" alt="Illuminate Your Space">
+      <span class="hero-cell-label">Illuminate Your Space →</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item reveal" data-d="1">
+    <span class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 9H6L5 8z"/><path d="M3 8h18"/><path d="M10 8V6a2 2 0 0 1 4 0v2"/></svg>
+    </span>
+    Free delivery from €150
+  </div>
+  <div class="trust-item reveal" data-d="2">
+    <span class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </span>
+    4.9/5 on Google Reviews
+  </div>
+  <div class="trust-item reveal" data-d="3">
+    <span class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    </span>
+    3 showrooms in Alicante
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-text">BEDROOMS &nbsp;·&nbsp; DINING ROOM &nbsp;·&nbsp; LIVING ROOM &nbsp;·&nbsp; DOORS &nbsp;·&nbsp; LAMPS &nbsp;·&nbsp; TABLES &nbsp;·&nbsp; BATHROOMS &nbsp;·&nbsp; GARDEN &nbsp;·&nbsp; DECORATION &nbsp;·&nbsp; STORAGE &nbsp;·&nbsp; HANDCRAFTED &nbsp;·&nbsp; BALI &nbsp;·&nbsp; INDIA &nbsp;·&nbsp; MOROCCO &nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">BEDROOMS &nbsp;·&nbsp; DINING ROOM &nbsp;·&nbsp; LIVING ROOM &nbsp;·&nbsp; DOORS &nbsp;·&nbsp; LAMPS &nbsp;·&nbsp; TABLES &nbsp;·&nbsp; BATHROOMS &nbsp;·&nbsp; GARDEN &nbsp;·&nbsp; DECORATION &nbsp;·&nbsp; STORAGE &nbsp;·&nbsp; HANDCRAFTED &nbsp;·&nbsp; BALI &nbsp;·&nbsp; INDIA &nbsp;·&nbsp; MOROCCO &nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">BEDROOMS &nbsp;·&nbsp; DINING ROOM &nbsp;·&nbsp; LIVING ROOM &nbsp;·&nbsp; DOORS &nbsp;·&nbsp; LAMPS &nbsp;·&nbsp; TABLES &nbsp;·&nbsp; BATHROOMS &nbsp;·&nbsp; GARDEN &nbsp;·&nbsp; DECORATION &nbsp;·&nbsp; STORAGE &nbsp;·&nbsp; HANDCRAFTED &nbsp;·&nbsp; BALI &nbsp;·&nbsp; INDIA &nbsp;·&nbsp; MOROCCO &nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">BEDROOMS &nbsp;·&nbsp; DINING ROOM &nbsp;·&nbsp; LIVING ROOM &nbsp;·&nbsp; DOORS &nbsp;·&nbsp; LAMPS &nbsp;·&nbsp; TABLES &nbsp;·&nbsp; BATHROOMS &nbsp;·&nbsp; GARDEN &nbsp;·&nbsp; DECORATION &nbsp;·&nbsp; STORAGE &nbsp;·&nbsp; HANDCRAFTED &nbsp;·&nbsp; BALI &nbsp;·&nbsp; INDIA &nbsp;·&nbsp; MOROCCO &nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- EDITORIAL INTRO -->
+<section class="editorial-intro">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">Our Story</span>
+    <h2 class="section-h2 reveal" data-d="2">A piece of the world,<br>in your home.</h2>
+  </div>
+  <p class="editorial-sub reveal" data-d="3">Three showrooms across Alicante. Hundreds of unique pieces handcrafted in Bali, India and Morocco. Each one with its own story.</p>
+  <a href="#" class="link-gold reveal" data-d="4">Discover our story →</a>
+</section>
+
+<!-- SHOP BY ROOM -->
+<section class="rooms-section">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">Shop by Room</span>
+    <h2 class="section-h2 reveal" data-d="2">Every room. Every style.</h2>
+  </div>
+  <div class="rooms-grid">
+
+    <div class="room-card reveal" data-d="1">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(8).jpg" alt="Bedrooms">
+        <video class="card-vid" src="images/clip01.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Bedrooms</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="2">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44.jpg" alt="Living Room">
+        <video class="card-vid" src="images/clip05.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Living Room</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="3">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(5).jpg" alt="Dining Room">
+        <video class="card-vid" src="images/clip07.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Dining Room</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="4">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(4).jpg" alt="Bathrooms">
+        <video class="card-vid" src="images/clip11.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Bathrooms</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="5">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(14).jpg" alt="Garden">
+        <video class="card-vid" src="images/clip09.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Garden</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="6">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(2).jpg" alt="Decoration">
+        <video class="card-vid" src="images/clip10.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Decoration</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED DOORS -->
+<section class="featured">
+  <div class="featured-media" data-featured-media>
+    <img class="featured-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(3).jpg" alt="Featured Doors — handcarved artisan pieces">
+    <video class="featured-vid" src="images/clip08.mp4" muted loop playsinline></video>
+  </div>
+  <div class="featured-text">
+    <div class="featured-bg-text">DOORS</div>
+    <span class="overline reveal from-right" data-d="1">The Collection</span>
+    <h2 class="featured-h2 reveal from-right" data-d="2">Each door tells<br>a century of<br>craftsmanship.</h2>
+    <p class="featured-body reveal from-right" data-d="3">Handcarved in India, Bali and Morocco. Each piece is unique — a portal between worlds, a conversation between past and present.</p>
+    <div class="reveal from-right" data-d="4"><a href="#" class="btn-outline-gold">Discover Doors</a></div>
+  </div>
+</section>
+
+<!-- LAMPS -->
+<section class="lamps-section">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">Illuminate Your Space</span>
+    <h2 class="section-h2 reveal" data-d="2">Light is the soul<br>of every room.</h2>
+  </div>
+  <div class="lamps-grid">
+
+    <div class="room-card reveal" data-d="1">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43.jpg" alt="Rattan Lamps">
+        <video class="card-vid" src="images/clip02.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Rattan Lamps</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="2">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(2).jpg" alt="Moroccan Lamps">
+        <video class="card-vid" src="images/clip04.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Moroccan Lamps</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+    <div class="room-card reveal" data-d="3">
+      <div class="card-media" data-media>
+        <img class="card-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(7).jpg" alt="Bohemian Lamps">
+        <video class="card-vid" src="images/clip03.mp4" muted loop playsinline></video>
+      </div>
+      <div class="card-label"><h3>Bohemian Lamps</h3><span class="discover-link">Discover now →</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TABLES -->
+<section class="tables-section">
+  <div class="tables-media" data-tables-media>
+    <img class="tables-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(4).jpg" alt="Live Edge Tables Collection">
+    <video class="tables-vid" src="images/clip06.mp4" muted loop playsinline></video>
+  </div>
+  <div class="tables-text">
+    <span class="overline reveal from-left" data-d="1">Live Edge Collection</span>
+    <h2 class="tables-h2 reveal from-left" data-d="2">No two tables<br>are the same.</h2>
+    <p class="tables-body reveal from-left" data-d="3">Slabs from century-old trees, shaped by hand. Each grain tells its own geography — a map of time and nature.</p>
+    <div class="reveal from-left" data-d="4"><a href="#" class="btn-outline-gold">Explore Tables</a></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">What Our Clients Say</span>
+    <h2 class="section-h2 reveal" data-d="2">Loved across Alicante.</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal scale-in" data-d="1">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-quote">"Superbe boutique avec beaucoup de style… un magasin à voir absolument vous serez tenter d'acheter à des prix très abordable pour un style original."</p>
+      <span class="testimonial-name">Maryline — Google Review</span>
+    </div>
+    <div class="testimonial-card reveal scale-in" data-d="2">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-quote">"Fantastic furniture and decor, tasteful ornaments and quality crafted items. LOVED IT! Already cannot wait to go back and browse."</p>
+      <span class="testimonial-name">Natasha — Google Review</span>
+    </div>
+    <div class="testimonial-card reveal scale-in" data-d="3">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-quote">"Nos encanta este lugar… los recomiendo de todo corazón. Creo que fueron más allá de nuestras expectativas."</p>
+      <span class="testimonial-name">Marlane — Google Review</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">Latest from the Blog</span>
+    <h2 class="section-h2 reveal" data-d="2">Inspiration for your home.</h2>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card reveal" data-d="1">
+      <div class="blog-img-wrap">
+        <img class="blog-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(9).jpg" alt="Blog — Balinese Furniture in Teulada">
+      </div>
+      <div class="blog-text">
+        <div class="blog-date">February 13, 2023</div>
+        <div class="blog-title">Discover your Balinese Furniture and Decoration Store in Teulada</div>
+        <a href="#" class="blog-read">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal" data-d="2">
+      <div class="blog-img-wrap">
+        <img class="blog-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-43%20(6).jpg" alt="Blog — Balinese Style in Decoration">
+      </div>
+      <div class="blog-text">
+        <div class="blog-date">February 13, 2023</div>
+        <div class="blog-title">Everything You Need to Know About the Balinese Style in Decoration</div>
+        <a href="#" class="blog-read">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal" data-d="3">
+      <div class="blog-img-wrap">
+        <img class="blog-img" src="images/Im%C3%A1genes/PHOTO-2026-05-03-17-19-44%20(13).jpg" alt="Blog — Balinese Furniture Store">
+      </div>
+      <div class="blog-text">
+        <div class="blog-date">February 13, 2023</div>
+        <div class="blog-title">The Furniture Store that has the Balinese Furniture you are looking for</div>
+        <a href="#" class="blog-read">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations">
+  <div class="section-header">
+    <span class="overline reveal" data-d="1">Find Us</span>
+    <h2 class="section-h2 light reveal" data-d="2">Three doors.<br><em>One world.</em></h2>
+  </div>
+  <div class="locations-grid">
+    <div class="location-item reveal" data-d="1">
+      <div class="location-name">Teulada</div>
+      <div class="location-info">
+        Calle Els gremis, 39<br>
+        03725 Teulada, Alicante<br>
+        Mon–Sat 10:00–18:00<br>
+        +34 654 47 20 34
+        <a href="mailto:info@makumamondial.com" class="location-email">info@makumamondial.com</a>
+      </div>
+    </div>
+    <div class="location-item reveal" data-d="2">
+      <div class="location-name">Pedreguer</div>
+      <div class="location-info">
+        Partida Golfes, 1<br>
+        03750 Pedreguer, Alicante<br>
+        Mon–Sat 10:00–18:00<br>
+        +34 644 09 34 45
+        <a href="mailto:info@makumamondial.com" class="location-email">info@makumamondial.com</a>
+      </div>
+    </div>
+    <div class="location-item reveal" data-d="3">
+      <div class="location-name">Dolores</div>
+      <div class="location-info">
+        Ctra. de Dolores a Almoradi, 39<br>
+        03150 Dolores, Alicante<br>
+        Mon–Sat 10:00–18:00<br>
+        +34 644 09 34 45
+        <a href="mailto:info@makumamondial.com" class="location-email">info@makumamondial.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Makuma Mondial</div>
+      <div class="footer-tagline">Balinese furniture since 2010.</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Pages</div>
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Inspiration</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Furnitures</div>
+      <ul class="footer-links">
+        <li><a href="#">Bedrooms</a></li>
+        <li><a href="#">Bathrooms</a></li>
+        <li><a href="#">Living Room</a></li>
+        <li><a href="#">Kitchen</a></li>
+        <li><a href="#">Garden</a></li>
+        <li><a href="#">Decoration</a></li>
+        <li><a href="#">Storage</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Makuma Mondial &nbsp;·&nbsp; info@makumamondial.com &nbsp;·&nbsp; All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+  // ── Navbar scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // ── Hero parallax
+  const heroImg = document.querySelector('.hero-left-img');
+  window.addEventListener('scroll', () => {
+    if (heroImg && window.scrollY < window.innerHeight) {
+      heroImg.style.transform = `translateY(${window.scrollY * 0.22}px)`;
+    }
+  }, { passive: true });
+
+  // ── Scroll reveal (IntersectionObserver)
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Hover video — room & lamp cards
+  document.querySelectorAll('[data-media]').forEach(media => {
+    const vid = media.querySelector('.card-vid');
+    media.addEventListener('mouseenter', () => {
+      media.classList.add('hovered');
+      if (vid && vid.src) { vid.play().catch(() => {}); }
+    });
+    media.addEventListener('mouseleave', () => {
+      media.classList.remove('hovered');
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+    });
+  });
+
+  // ── Hover video — featured doors
+  const featuredMedia = document.querySelector('[data-featured-media]');
+  if (featuredMedia) {
+    const vid = featuredMedia.querySelector('.featured-vid');
+    featuredMedia.addEventListener('mouseenter', () => {
+      featuredMedia.classList.add('hovered');
+      if (vid && vid.src) { vid.play().catch(() => {}); }
+    });
+    featuredMedia.addEventListener('mouseleave', () => {
+      featuredMedia.classList.remove('hovered');
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+    });
+  }
+
+  // ── Hover video — tables
+  const tablesMedia = document.querySelector('[data-tables-media]');
+  if (tablesMedia) {
+    const vid = tablesMedia.querySelector('.tables-vid');
+    tablesMedia.addEventListener('mouseenter', () => {
+      tablesMedia.classList.add('hovered');
+      if (vid && vid.src) { vid.play().catch(() => {}); }
+    });
+    tablesMedia.addEventListener('mouseleave', () => {
+      tablesMedia.classList.remove('hovered');
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+    });
+  }
+
+  // ── Mobile hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = 'none';
+    } else {
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'var(--cream)';
+      links.style.padding = '1.5rem 2rem';
+      links.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
+      links.style.zIndex = '998';
+    }
+  });
+</script>
+</body>
+</html>
